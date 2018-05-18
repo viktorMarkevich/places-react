@@ -2,6 +2,6 @@
   "root": "src/",
   "clean_urls": false,
   "routes": {
-    "/**": "index.html"
+    "/*.html": "index.html",
   }
 }
