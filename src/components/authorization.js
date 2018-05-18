@@ -58,15 +58,15 @@ class Authorization extends Component {
                   <CardBody>
                     <Form>
                       <FormGroup row>
-                        <Label for="exampleEmail" sm={2}>Email</Label>
+                        <Label for="email" sm={2}>Email</Label>
                         <Col sm={10}>
-                          <Input type="email" name="email" id="exampleEmail" placeholder="email@example.com"/>
+                          <Input type="email" name="email" id="email" placeholder="email@example.com"/>
                         </Col>
                       </FormGroup>
                       <FormGroup row>
-                        <Label for="examplePassword" sm={2}>Password</Label>
+                        <Label for="password" sm={2}>Password</Label>
                         <Col sm={10}>
-                          <Input type="password" name="password" id="examplePassword" placeholder="some password"/>
+                          <Input type="password" name="password" id="password" placeholder="some password"/>
                         </Col>
                       </FormGroup>
                       <FormGroup row className={'text-center'}>
