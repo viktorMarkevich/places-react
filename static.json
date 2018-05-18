@@ -6,7 +6,7 @@
   },
   "proxies": {
     "/api/": {
-      "origin": "https://backend.example.com/api"
+      "origin": "https://example.com/api"
     }
   }
 }
