@@ -23,10 +23,6 @@
 }
 
 
-/* normalize divs surrounding the content*/
-html, body {
-  height: 100% !important;
-}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
