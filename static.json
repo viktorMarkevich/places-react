@@ -1,7 +1,0 @@
-{
-  "root": "src/",
-  "clean_urls": false,
-  "routes": {
-    "/*.html": "index.html",
-  }
-}
