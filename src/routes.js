@@ -4,8 +4,8 @@ import { Route, IndexRoute } from 'react-router-dom';
 /**
  * Import all page components here
  */
-import App from './components/App';
-import AuthorizationPage from './components/authorization';
+import App from './App';
+import authorization from './components/authorization';
 import dashboard from './components/dashboard';
 // import SomeOtherPage from './components/SomeOtherPage';
 
@@ -15,7 +15,7 @@ import dashboard from './components/dashboard';
  */
 export default (
   <Route path="/" component={App}>
-
+    <Route path="/authorization" component={authorization} />
     <Route path="/dashboard" component={dashboard} />
   </Route>
 );
