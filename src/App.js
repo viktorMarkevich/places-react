@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link, Match, Redirect, Switch } from 'react-router-dom'
 
-import LoginPage from './components/authorization'
-import OverviewPage from './components/dashboard'
+import Authorization from './components/authorization'
+import Dashboard from './components/dashboard'
 // import AccountPage from './page/AccountPage'
+import { Container } from 'reactstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -23,9 +24,7 @@ const DashboardLayout = ({children, ...rest}) => {
 
 const LoginLayout = ({children, ...rest}) => {
   return (
-    <div className="page page-login">
-      <div className="main">{children}</div>
-    </div>
+    <Container className={'main'}>{children}</Container>
   )
 };
 
@@ -65,9 +64,8 @@ class App extends Component {
           <Route exact path="/">
             <Redirect to="/login" />
           </Route>
-          <LoginLayoutRoute path="/login" component={LoginPage} />
-          <DashboardRoute path="/overview" component={OverviewPage} />
-          {/*<DashboardRoute path="/account" component={AccountPage} />*/}
+          <LoginLayoutRoute path="/login" component={Authorization} />
+          <DashboardRoute path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>
     );
