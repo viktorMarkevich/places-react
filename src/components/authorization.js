@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
+import        {PropTypes} from 'prop-types';
 import {
   Card, CardBody,
-  Container, Row, Col,
+  Row, Col,
   Button,
   Form, FormGroup, Label, Input,
   Nav, NavItem, NavLink,
-  TabContent, TabPane, CardTitle, CardText
+  TabContent, TabPane
 } from 'reactstrap';
 import classnames from 'classnames';
+import TextInput from './common/authorizationInputs';
 
 
 class Authorization extends Component {
@@ -18,6 +20,10 @@ class Authorization extends Component {
     this.state = {
       activeTab: '1'
     };
+
+    this.state['credentials'] = { email: '', password: '' };
+    this.onChange = this.onChange.bind(this);
+    this.onSave = this.onSave.bind(this);
   }
 
   toggle(tab) {
@@ -26,6 +32,18 @@ class Authorization extends Component {
         activeTab: tab
       });
     }
+  }
+
+  onChange(event) {
+    const field = event.target.name;
+    const credentials = this.state.credentials;
+    credentials[field] = event.target.value;
+    return this.setState({credentials: credentials});
+  }
+
+  onSave(event) {
+    event.preventDefault();
+    this.props.actions.logInUser(this.state.credentials);
   }
 
   render() {
@@ -56,12 +74,7 @@ class Authorization extends Component {
               <TabPane tabId="1">
                 <CardBody>
                   <Form>
-                    <FormGroup row>
-                      <Label for="email" sm={2}>Email</Label>
-                      <Col sm={10}>
-                        <Input type="email" name="email" id="email" placeholder="email@example.com"/>
-                      </Col>
-                    </FormGroup>
+                    <TextInput name="email" label="email" value={this.state.credentials.email} onChange={this.onChange}/>
                     <FormGroup row>
                       <Label for="password" sm={2}>Password</Label>
                       <Col sm={10}>

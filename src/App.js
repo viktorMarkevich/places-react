@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Link, Match, Redirect, Switch } from 'r
 
 import Authorization from './components/authorization'
 import Dashboard from './components/dashboard'
-// import AccountPage from './page/AccountPage'
 import { Container } from 'reactstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -62,9 +61,9 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/">
-            <Redirect to="/login" />
+            <Redirect to="/authorization" />
           </Route>
-          <LoginLayoutRoute path="/login" component={Authorization} />
+          <LoginLayoutRoute path="/authorization" component={Authorization} />
           <DashboardRoute path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>

@@ -19,6 +19,9 @@ class Dashboard extends Component {
           <Col sm="12" md={{size: 8, offset: 2}}>
             <Card>
               <h1>React.js</h1>
+              <div>
+                {["Hello ", <span>World</span>, "!"]  }
+              </div>
             </Card>
           </Col>
         </Row>
