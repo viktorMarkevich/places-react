@@ -74,13 +74,11 @@ class Authorization extends Component {
               <TabPane tabId="1">
                 <CardBody>
                   <Form>
-                    <TextInput name="email" label="email" value={this.state.credentials.email} onChange={this.onChange}/>
-                    <FormGroup row>
-                      <Label for="password" sm={2}>Password</Label>
-                      <Col sm={10}>
-                        <Input type="password" name="password" id="password" placeholder="some password"/>
-                      </Col>
-                    </FormGroup>
+                    <TextInput name="email" label="Email" type="email"
+                               value={this.state.credentials.email} onChange={this.onChange}/>
+                    <TextInput name="password" label="Password" type="password" placeholder="some password"
+                               value={this.state.credentials.password} onChange={this.onChange}/>
+
                     <FormGroup row className={'text-center'}>
                       <Col sm={{size: 12}}>
                         <Button>Sign in</Button>
@@ -116,40 +114,21 @@ class Authorization extends Component {
               <TabPane tabId="2">
                 <CardBody>
                   <Form>
-                    <FormGroup row>
-                      <Label for="exampleFirstName" sm={3}>First name</Label>
-                      <Col sm={9}>
-                        <Input type="text" name="first_name" id="exampleFirstName" placeholder="Joe"/>
-                      </Col>
-                    </FormGroup>
+                    <TextInput name="first_name" label="First name"
+                               placeholder='Some name' onChange={this.onChange}/>
 
-                    <FormGroup row>
-                      <Label for="exampleLastName" sm={3}>Last name</Label>
-                      <Col sm={9}>
-                        <Input type="text" name="last_name" id="exampleLastName" placeholder="Dou"/>
-                      </Col>
-                    </FormGroup>
+                    <TextInput name="last_name" label="Last name"
+                               placeholder='Some name' onChange={this.onChange}/>
 
-                    <FormGroup row>
-                      <Label for="exampleEmail" sm={3}>Email</Label>
-                      <Col sm={9}>
-                        <Input type="email" name="email" id="exampleEmail" placeholder="email@example.com"/>
-                      </Col>
-                    </FormGroup>
+                    <TextInput name="email" label="Email" type="email"
+                               value={this.state.credentials.email} onChange={this.onChange}/>
 
-                    <FormGroup row>
-                      <Label for="examplePassword" sm={3}>Password</Label>
-                      <Col sm={9}>
-                        <Input type="password" name="password" id="examplePassword" placeholder="some password"/>
-                      </Col>
-                    </FormGroup>
-
-                    <FormGroup row>
-                      <Label for="examplePasswordConfirmation" sm={3}>Password Confirmation</Label>
-                      <Col sm={9}>
-                        <Input type="password" name="password_confirmation" id="examplePasswordConfirmation" placeholder="please repeat password"/>
-                      </Col>
-                    </FormGroup>
+                    <TextInput name="password" label="Password" type="password" placeholder="some password"
+                               value={this.state.credentials.password} onChange={this.onChange}/>
+                    
+                    <TextInput name="password_confirmation" label="Password confirmation" type="password"
+                               placeholder="please repeat password"
+                               value={this.state.credentials.password} onChange={this.onChange}/>
 
                     <FormGroup row className={'text-center'}>
                       <Col sm={{size: 12}}>
