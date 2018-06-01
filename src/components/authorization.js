@@ -10,6 +10,9 @@ import {
 } from 'reactstrap';
 import classnames from 'classnames';
 import TextInput from './common/authorizationInputs';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+//import * as sessionActions from '../actions/sessionActions'; //todo
 
 
 class Authorization extends Component {
@@ -81,7 +84,7 @@ class Authorization extends Component {
 
                     <FormGroup row className={'text-center'}>
                       <Col sm={{size: 12}}>
-                        <Button>Sign in</Button>
+                        <Button onClick={this.onSave}>Sign in</Button>
                       </Col>
                     </FormGroup>
 
@@ -125,7 +128,7 @@ class Authorization extends Component {
 
                     <TextInput name="password" label="Password" type="password" placeholder="some password"
                                value={this.state.credentials.password} onChange={this.onChange}/>
-                    
+
                     <TextInput name="password_confirmation" label="Password confirmation" type="password"
                                placeholder="please repeat password"
                                value={this.state.credentials.password} onChange={this.onChange}/>
@@ -165,3 +168,9 @@ class Authorization extends Component {
 }
 
 export default Authorization;
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     actions: bindActionCreators(sessionActions, dispatch)
+//   };
+// }
+// export default connect(null, mapDispatchToProps)(Authorization);
