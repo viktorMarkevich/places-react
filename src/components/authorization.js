@@ -1,21 +1,36 @@
 import React, {Component} from 'react';
 import        {PropTypes} from 'prop-types';
-import {
-  Card, CardBody,
-  Row, Col,
-  Button,
-  Form, FormGroup, Label, Input,
-  Nav, NavItem, NavLink,
-  TabContent, TabPane
-} from 'reactstrap';
+import {Card, CardBody, Row, Col, Button, Form, FormGroup, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import classnames from 'classnames';
 import TextInput from './common/authorizationInputs';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-//import * as sessionActions from '../actions/sessionActions'; //todo
+import Login from './Login'
+import {ACTION_CHANGE_FIRST_NAME, ACTION_CHANGE_LAST_NAME} from '../constants/inputs_constants'
+
+const initialState = {
+  firstName: '',
+  lastName: ''
+};
+
+const actionChangeFirstName = {
+  type: ACTION_CHANGE_FIRST_NAME,
+  payload: null
+};
+
+const actionChangeLastName = {
+  type: ACTION_CHANGE_LAST_NAME,
+  payload: null
+};
+
+export const rootReducer = (state = initialState, action) => {
+  return state;
+};
+
 
 
 class Authorization extends Component {
+
   constructor(props) {
     super(props);
 
@@ -75,43 +90,7 @@ class Authorization extends Component {
             <br/>
             <TabContent activeTab={this.state.activeTab}>
               <TabPane tabId="1">
-                <CardBody>
-                  <Form>
-                    <TextInput name="email" label="Email" type="email"
-                               value={this.state.credentials.email} onChange={this.onChange}/>
-                    <TextInput name="password" label="Password" type="password" placeholder="some password"
-                               value={this.state.credentials.password} onChange={this.onChange}/>
-
-                    <FormGroup row className={'text-center'}>
-                      <Col sm={{size: 12}}>
-                        <Button onClick={this.onSave}>Sign in</Button>
-                      </Col>
-                    </FormGroup>
-
-                    <Row className={'text-center'}>
-                      <Col sm={{size: 12}}>
-                        <a href={'#'}>Forgot password?</a>
-                      </Col>
-                    </Row>
-
-                    <Row className={'text-center'}>
-                      <Col sm={{size: 12}}>
-                        Or
-                      </Col>
-                    </Row>
-                    <Row className={'text-center'}>
-                      <Col sm={{size: 12}}>
-                        <Button>Sign in with Google</Button>
-                      </Col>
-                    </Row>
-                    <br/>
-                    <Row className={'text-center'}>
-                      <Col sm={{size: 12}}>
-                        <Button>Sign in with Facebook</Button>
-                      </Col>
-                    </Row>
-                  </Form>
-                </CardBody>
+                <Login/>
               </TabPane>
 
               <TabPane tabId="2">
@@ -168,9 +147,3 @@ class Authorization extends Component {
 }
 
 export default Authorization;
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators(sessionActions, dispatch)
-//   };
-// }
-// export default connect(null, mapDispatchToProps)(Authorization);
