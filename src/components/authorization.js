@@ -2,32 +2,8 @@ import React, {Component} from 'react';
 import        {PropTypes} from 'prop-types';
 import {Card, CardBody, Row, Col, Button, Form, FormGroup, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import classnames from 'classnames';
-import TextInput from './common/authorizationInputs';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import Login from './Login'
-import {ACTION_CHANGE_FIRST_NAME, ACTION_CHANGE_LAST_NAME} from '../constants/inputs_constants'
-
-const initialState = {
-  firstName: '',
-  lastName: ''
-};
-
-const actionChangeFirstName = {
-  type: ACTION_CHANGE_FIRST_NAME,
-  payload: null
-};
-
-const actionChangeLastName = {
-  type: ACTION_CHANGE_LAST_NAME,
-  payload: null
-};
-
-export const rootReducer = (state = initialState, action) => {
-  return state;
-};
-
-
+import TextInput from './details/sign_up/inputs';
+import LoginForm from './details/login/form'
 
 class Authorization extends Component {
 
@@ -90,7 +66,7 @@ class Authorization extends Component {
             <br/>
             <TabContent activeTab={this.state.activeTab}>
               <TabPane tabId="1">
-                <Login/>
+                <LoginForm/>
               </TabPane>
 
               <TabPane tabId="2">
@@ -141,7 +117,6 @@ class Authorization extends Component {
           </Card>
         </Col>
       </Row>
-      // </Container>
     );
   }
 }
