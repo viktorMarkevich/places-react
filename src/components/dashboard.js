@@ -1,14 +1,5 @@
 import React, {Component} from 'react';
-import {
-  Card, CardBody,
-  Container, Row, Col,
-  Button,
-  Form, FormGroup, Label, Input,
-  Nav, NavItem, NavLink,
-  TabContent, TabPane, CardTitle, CardText
-} from 'reactstrap';
-import classnames from 'classnames';
-
+import { Card, Container, Row, Col } from 'reactstrap';
 
 class Dashboard extends Component {
 

@@ -1,28 +1,105 @@
-import React from 'react';
-import    {PropTypes} from 'prop-types';
-import { Col, FormGroup, Label, Input } from 'reactstrap';
+import React, {Component} from 'react';
+import {CardBody, Row, Col, Button, Form, FormGroup} from 'reactstrap';
+import TextInput from './inputs';
+import classnames from 'classnames';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {ACTION_CHANGE_FIRST_NAME, ACTION_CHANGE_LAST_NAME} from "../../../constants/inputs_constants";
 
-const TextInput = ({name, label, onChange, placeholder, value, error, type="text"}) => {
-
-  return (
-    <FormGroup row>
-      <Label for={name} sm={2}>{label}</Label>
-      <Col sm={10}>
-        <Input type={type} name={name} placeholder={placeholder} value={value} onChange={onChange}/>
-        {error && <div className="alert alert-danger">{error}</div>}
-      </Col>
-    </FormGroup>
-  );
+const initialState = {
+  firstName: '',
+  lastName: ''
 };
 
-TextInput.propTypes = {
-  first_name: PropTypes.string.isRequired,
-  last_name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  value: PropTypes.string,
-  error: PropTypes.string
+const actionChangeFirstName = {
+  type: ACTION_CHANGE_FIRST_NAME,
+  payload: null
 };
 
-export default TextInput;
+const actionChangeLastName = {
+  type: ACTION_CHANGE_LAST_NAME,
+  payload: null
+};
+
+export const rootReducer = (state = initialState, action) => {
+  return state;
+};
+
+class SignUpForm extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+    this.state['credentials'] = { email: '', password: '' };
+    this.onChange = this.onChange.bind(this);
+    this.onSave = this.onSave.bind(this);
+  }
+
+  onChange(event) {
+    const field = event.target.name;
+    const credentials = this.state.credentials;
+    credentials[field] = event.target.value;
+    return this.setState({credentials: credentials});
+  }
+
+  onSave(event) {
+    event.preventDefault();
+    this.props.actions.logInUser(this.state.credentials);
+  }
+
+  render() {
+    console.log(this.props.firstName);
+    return <CardBody>
+      <Form>
+        <TextInput name="first_name" label="First name"
+                   placeholder='Some name' onChange={this.onChange}/>
+
+        <TextInput name="last_name" label="Last name"
+                   placeholder='Some name' onChange={this.onChange}/>
+
+        <TextInput name="email" label="Email" type="email"
+                   value={this.state.credentials.email} onChange={this.onChange}/>
+
+        <TextInput name="password" label="Password" type="password" placeholder="some password"
+                   value={this.state.credentials.password} onChange={this.onChange}/>
+
+        <TextInput name="password_confirmation" label="Password confirmation" type="password"
+                   placeholder="please repeat password"
+                   value={this.state.credentials.password} onChange={this.onChange}/>
+
+        <FormGroup row className={'text-center'}>
+          <Col sm={{size: 12}}>
+            <Button>Sign up</Button>
+          </Col>
+        </FormGroup>
+
+        <Row className={'text-center'}>
+          <Col sm={{size: 12}}>
+            Or
+          </Col>
+        </Row>
+        <Row className={'text-center'}>
+          <Col sm={{size: 12}}>
+            <Button>Sign in with Google</Button>
+          </Col>
+        </Row>
+        <br/>
+        <Row className={'text-center'}>
+          <Col sm={{size: 12}}>
+            <Button>Sign in with Facebook</Button>
+          </Col>
+        </Row>
+      </Form>
+    </CardBody>
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    firstName: state.firstName,
+    lastName: state.lastName
+  };
+};
+
+export default SignUpForm;

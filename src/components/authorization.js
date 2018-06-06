@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import        {PropTypes} from 'prop-types';
-import {Card, CardBody, Row, Col, Button, Form, FormGroup, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
+import {Card, Row, Col, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import classnames from 'classnames';
-import TextInput from './details/sign_up/inputs';
 import LoginForm from './details/login/form'
+import SignUpForm from './details/sign_up/form'
 
 class Authorization extends Component {
 
@@ -70,48 +69,7 @@ class Authorization extends Component {
               </TabPane>
 
               <TabPane tabId="2">
-                <CardBody>
-                  <Form>
-                    <TextInput name="first_name" label="First name"
-                               placeholder='Some name' onChange={this.onChange}/>
-
-                    <TextInput name="last_name" label="Last name"
-                               placeholder='Some name' onChange={this.onChange}/>
-
-                    <TextInput name="email" label="Email" type="email"
-                               value={this.state.credentials.email} onChange={this.onChange}/>
-
-                    <TextInput name="password" label="Password" type="password" placeholder="some password"
-                               value={this.state.credentials.password} onChange={this.onChange}/>
-
-                    <TextInput name="password_confirmation" label="Password confirmation" type="password"
-                               placeholder="please repeat password"
-                               value={this.state.credentials.password} onChange={this.onChange}/>
-
-                    <FormGroup row className={'text-center'}>
-                      <Col sm={{size: 12}}>
-                        <Button>Sign up</Button>
-                      </Col>
-                    </FormGroup>
-
-                    <Row className={'text-center'}>
-                      <Col sm={{size: 12}}>
-                        Or
-                      </Col>
-                    </Row>
-                    <Row className={'text-center'}>
-                      <Col sm={{size: 12}}>
-                        <Button>Sign in with Google</Button>
-                      </Col>
-                    </Row>
-                    <br/>
-                    <Row className={'text-center'}>
-                      <Col sm={{size: 12}}>
-                        <Button>Sign in with Facebook</Button>
-                      </Col>
-                    </Row>
-                  </Form>
-                </CardBody>
+                <SignUpForm/>
               </TabPane>
             </TabContent>
           </Card>
