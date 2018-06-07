@@ -1,28 +1,28 @@
-import React, {Component} from 'react';
-import {CardBody, Row, Col, Button, Form, FormGroup} from 'reactstrap';
+import React, { Component } from 'react';
+import { CardBody, Row, Col, Button, Form, FormGroup } from 'reactstrap';
 import TextInput from './inputs';
 import classnames from 'classnames';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {loginConst} from "../../../constants/user_const";
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { loginConst } from "../../../constants/user_const";
 
 const initialState = {
   email: '',
   password: ''
 };
 
-const actionChangeEmail = {
-  type: loginConst.ACTION_CHANGE_EMAIL,
-  payload: null
+const changeEmail = (newEmail) => {
+  return {
+    type: loginConst.ACTION_CHANGE_EMAIL,
+    payload: newEmail
+  };
 };
 
-const actionChangePassword = {
-  type: loginConst.ACTION_CHANGE_PASSWORD,
-  payload: null
-};
-
-export const rootReducer = (state = initialState, action) => {
-  return state;
+const changePassword = (newPassword) => {
+  return {
+    type: loginConst.ACTION_CHANGE_PASSWORD,
+    payload: newPassword
+  }
 };
 
 const mapStateToProps = (state) => {
