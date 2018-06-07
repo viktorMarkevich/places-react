@@ -18,6 +18,9 @@ const TextInput = ({name, label, onChange, placeholder, value, error, type="text
 TextInput.propTypes = {
   first_name: PropTypes.string.isRequired,
   last_name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  password_confirmation: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,

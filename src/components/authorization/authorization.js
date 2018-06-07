@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Card, Row, Col, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import classnames from 'classnames';
-import LoginForm from './details/login/form'
-import SignUpForm from './details/sign_up/form'
+import LoginForm from './login/form'
+import SignUpForm from './sign_up/form'
 
 class Authorization extends Component {
 
@@ -13,10 +13,6 @@ class Authorization extends Component {
     this.state = {
       activeTab: '1'
     };
-
-    this.state['credentials'] = { email: '', password: '' };
-    this.onChange = this.onChange.bind(this);
-    this.onSave = this.onSave.bind(this);
   }
 
   toggle(tab) {
@@ -25,18 +21,6 @@ class Authorization extends Component {
         activeTab: tab
       });
     }
-  }
-
-  onChange(event) {
-    const field = event.target.name;
-    const credentials = this.state.credentials;
-    credentials[field] = event.target.value;
-    return this.setState({credentials: credentials});
-  }
-
-  onSave(event) {
-    event.preventDefault();
-    this.props.actions.logInUser(this.state.credentials);
   }
 
   render() {

@@ -4,7 +4,7 @@ import TextInput from './inputs';
 import classnames from 'classnames';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {ACTION_CHANGE_FIRST_NAME, ACTION_CHANGE_LAST_NAME} from "../../../constants/inputs_constants";
+import {signUpConst} from "../../../constants/user_const";
 
 const initialState = {
   firstName: '',
@@ -12,12 +12,12 @@ const initialState = {
 };
 
 const actionChangeFirstName = {
-  type: ACTION_CHANGE_FIRST_NAME,
+  type: signUpConst.ACTION_CHANGE_FIRST_NAME,
   payload: null
 };
 
 const actionChangeLastName = {
-  type: ACTION_CHANGE_LAST_NAME,
+  type: signUpConst.ACTION_CHANGE_LAST_NAME,
   payload: null
 };
 
@@ -25,7 +25,7 @@ export const rootReducer = (state = initialState, action) => {
   return state;
 };
 
-class LoginForm extends Component {
+class SignUpForm extends Component {
 
   constructor(props) {
     super(props);
@@ -52,22 +52,27 @@ class LoginForm extends Component {
     console.log(this.props.firstName);
     return <CardBody>
       <Form>
+        <TextInput name="first_name" label="First name"
+                   placeholder='Some name' onChange={this.onChange}/>
+
+        <TextInput name="last_name" label="Last name"
+                   placeholder='Some name' onChange={this.onChange}/>
+
         <TextInput name="email" label="Email" type="email"
                    value={this.state.credentials.email} onChange={this.onChange}/>
+
         <TextInput name="password" label="Password" type="password" placeholder="some password"
+                   value={this.state.credentials.password} onChange={this.onChange}/>
+
+        <TextInput name="password_confirmation" label="Password confirmation" type="password"
+                   placeholder="please repeat password"
                    value={this.state.credentials.password} onChange={this.onChange}/>
 
         <FormGroup row className={'text-center'}>
           <Col sm={{size: 12}}>
-            <Button onClick={this.onSave}>Sign in</Button>
+            <Button>Sign up</Button>
           </Col>
         </FormGroup>
-
-        <Row className={'text-center'}>
-          <Col sm={{size: 12}}>
-            <a href={'#'}>Forgot password?</a>
-          </Col>
-        </Row>
 
         <Row className={'text-center'}>
           <Col sm={{size: 12}}>
@@ -97,4 +102,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default LoginForm;
+export default SignUpForm;
