@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Card, Row, Col, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import classnames from 'classnames';
-import LoginForm from './login/form'
+import WrappedMainComponent from './login/form'
 import SignUpForm from './sign_up/form'
 
 class Authorization extends Component {
@@ -49,7 +49,7 @@ class Authorization extends Component {
             <br/>
             <TabContent activeTab={this.state.activeTab}>
               <TabPane tabId="1">
-                <LoginForm/>
+                <WrappedMainComponent/>
               </TabPane>
 
               <TabPane tabId="2">
