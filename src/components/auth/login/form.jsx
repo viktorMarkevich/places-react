@@ -59,7 +59,6 @@ class LoginForm extends Component {
 }
 
 const putStateToProps = (state) => {
-  console.log(state);
   return {
     email: state.email,
     password: state.password
