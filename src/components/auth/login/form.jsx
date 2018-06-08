@@ -101,7 +101,7 @@ export const rootReducer = (state = initialState, action) => {
     case loginConst.ACTION_CHANGE_PASSWORD:
       return { ...state, password: action.payload };
     default:
-      return { state };
+      return state;
   }
 };
 
