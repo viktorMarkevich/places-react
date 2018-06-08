@@ -1,6 +1,9 @@
 import { loginConst } from '../constants';
-import { initialState } from '../components/auth/login/form';
 
+const initialState = {
+  email: 'example@g.com',
+  password: '1234234'
+};
 
 export function loginFormReducer(state = initialState, action) {
   switch (action.type) {
@@ -9,6 +12,6 @@ export function loginFormReducer(state = initialState, action) {
     case loginConst.ACTION_CHANGE_PASSWORD:
       return { ...state, password: action.payload };
     default:
-      return { state };
+      return state ;
   }
 }

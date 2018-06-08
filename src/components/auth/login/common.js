@@ -1,15 +1,36 @@
 import React, { Component } from 'react';
 import { CardBody, Row, Col, Button, Form, FormGroup } from 'reactstrap';
 import TextInput from './inputs';
+import classnames from 'classnames';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { changeEmail, changePassword } from '../../../actions/login';
+import { loginConst } from "../../../constants/user_const";
+
+
+const initialState = {
+  email: 'example@g.com',
+  password: '1234234'
+};
+
+const changeEmail = (newEmail) => {
+  return {
+    type: loginConst.ACTION_CHANGE_EMAIL,
+    payload: newEmail
+  };
+};
+
+const changePassword = (newPassword) => {
+  return {
+    type: loginConst.ACTION_CHANGE_PASSWORD,
+    payload: newPassword
+  }
+};
 
 class LoginForm extends Component {
+
   render() {
     console.log(this.props);
     const { email, password, changeEmail, changePassword } = this.props;
-
     return <CardBody>
       <Form>
         <TextInput name="email" label="Email" type="email" placeholder="email"
@@ -73,5 +94,18 @@ const putActionToProps = (dispatch) => {
   }
 };
 
-const WrappedMainComponent = connect(putStateToProps, putActionToProps)(LoginForm);
+export const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case loginConst.ACTION_CHANGE_EMAIL:
+      return { ...state, email: action.payload };
+    case loginConst.ACTION_CHANGE_PASSWORD:
+      return { ...state, password: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const WrappedMainComponent = connect(putStateToProps, putActionToProps)(LoginForm);
+
+// export default LoginForm;
 export default WrappedMainComponent;
