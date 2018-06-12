@@ -4,7 +4,7 @@ import TextInput from './inputs';
 import classnames from 'classnames';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {signUpConst} from "../../../constants/user_const";
+import {signUpConst} from "../../../constants/userConst";
 
 const initialState = {
   firstName: '',

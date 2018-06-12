@@ -1,4 +1,4 @@
-import {loginConst} from "../constants/user_const";
+import {loginConst} from "../constants/userConst";
 
 export const changeEmail = (newEmail) => {
   return {

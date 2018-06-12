@@ -4,7 +4,7 @@ import TextInput from './inputs';
 import classnames from 'classnames';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { loginConst } from "../../../constants/user_const";
+import { loginConst } from "../../../constants/userConst";
 
 
 const initialState = {
