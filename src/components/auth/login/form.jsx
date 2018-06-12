@@ -7,7 +7,6 @@ import { changeEmail, changePassword } from '../../../actions/login';
 
 class LoginForm extends Component {
   render() {
-    console.log(this.props);
     const { email, password, changeEmail, changePassword } = this.props;
 
     return <CardBody>

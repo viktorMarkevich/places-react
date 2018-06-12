@@ -6,9 +6,5 @@ import { loginFormReducer } from './loginForm';
 //   sign_up,
 //   loginFormReducer
 // });
-//
-// export default rootReducer;
-
 const rootReducer = loginFormReducer;
-
 export default rootReducer;

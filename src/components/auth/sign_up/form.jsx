@@ -49,24 +49,24 @@ class SignUpForm extends Component {
   }
 
   render() {
-    console.log(this.props.firstName);
+    // console.log(this.props.firstName);
     return <CardBody>
       <Form>
-        <TextInput name="first_name" label="First name"
-                   placeholder='Some name' onChange={this.onChange}/>
+        {/*<TextInput name="first_name" label="First name"*/}
+                   {/*placeholder='Some name' onChange={this.onChange}/>*/}
 
-        <TextInput name="last_name" label="Last name"
-                   placeholder='Some name' onChange={this.onChange}/>
+        {/*<TextInput name="last_name" label="Last name"*/}
+                   {/*placeholder='Some name' onChange={this.onChange}/>*/}
 
-        <TextInput name="email" label="Email" type="email"
-                   value={this.state.credentials.email} onChange={this.onChange}/>
+        {/*<TextInput name="email" label="Email" type="email"*/}
+                   {/*value={this.state.credentials.email} onChange={this.onChange}/>*/}
 
-        <TextInput name="password" label="Password" type="password" placeholder="some password"
-                   value={this.state.credentials.password} onChange={this.onChange}/>
+        {/*<TextInput name="password" label="Password" type="password" placeholder="some password"*/}
+                   {/*value={this.state.credentials.password} onChange={this.onChange}/>*/}
 
-        <TextInput name="password_confirmation" label="Password confirmation" type="password"
-                   placeholder="please repeat password"
-                   value={this.state.credentials.password} onChange={this.onChange}/>
+        {/*<TextInput name="password_confirmation" label="Password confirmation" type="password"*/}
+                   {/*placeholder="please repeat password"*/}
+                   {/*value={this.state.credentials.password} onChange={this.onChange}/>*/}
 
         <FormGroup row className={'text-center'}>
           <Col sm={{size: 12}}>
