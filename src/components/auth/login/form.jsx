@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import { CardBody, Row, Col, Button, Form, FormGroup } from 'reactstrap';
-import TextInput from './inputs';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeEmail, changePassword } from '../../../actions/login';
+import TextInput from './inputs';
 
-class LoginForm extends Component {
+class LoginFormData extends Component {
   render() {
     const { email, password, changeEmail, changePassword } = this.props;
-
-    return <CardBody>
+        return <CardBody>
       <Form>
         <TextInput name="email" label="Email" type="email" placeholder="email"
                    value={email}
                    onChange={(event) => {
                      changeEmail(event.target.value);
-                   }}/>
+                   }}
+                   required={'required'}/>
         <TextInput name="password" label="Password" type="password" placeholder="password"
                    value={password}
                    onChange={(event) => {
                      changePassword(event.target.value);
-                   }}/>
+                   }}
+                   required={'required'}/>
         <FormGroup row className={'text-center'}>
           <Col sm={{size: 12}}>
             <Button onClick={this.onSave}>Sign in</Button>
@@ -58,6 +59,7 @@ class LoginForm extends Component {
 }
 
 const putStateToProps = (state) => {
+  state = state.authorizationReducer;
   return {
     email: state.email,
     password: state.password
@@ -71,5 +73,5 @@ const putActionToProps = (dispatch) => {
   }
 };
 
-const WrappedMainComponent = connect(putStateToProps, putActionToProps)(LoginForm);
-export default WrappedMainComponent;
+const LoginForm = connect(putStateToProps, putActionToProps)(LoginFormData);
+export default LoginForm;

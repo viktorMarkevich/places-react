@@ -64,6 +64,7 @@ class App extends Component {
             <Redirect to="/authorization" />
           </Route>
           <LoginLayoutRoute path="/authorization" component={Authorization} />
+
           <DashboardRoute path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>

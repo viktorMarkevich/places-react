@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import { sign_up } from './sign_up';
-import { loginFormReducer } from './loginForm';
+import { authorizationReducer } from './authorization';
 
-// const rootReducer = combineReducers({
-//   sign_up,
-//   loginFormReducer
-// });
-const rootReducer = loginFormReducer;
+const rootReducer = combineReducers({
+  authorizationReducer
+});
+
 export default rootReducer;

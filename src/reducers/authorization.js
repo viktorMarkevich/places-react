@@ -1,11 +1,11 @@
 import { loginConst } from '../constants';
 
 const initialState = {
-  email: 'example@g.com',
-  password: '1234234'
+  email: 'd',
+  password: 'd'
 };
 
-export function loginFormReducer(state = initialState, action) {
+export function authorizationReducer(state = initialState, action) {
   switch (action.type) {
     case loginConst.ACTION_CHANGE_EMAIL:
       return { ...state, email: action.payload };

@@ -7,8 +7,8 @@ import {connect} from 'react-redux';
 import {signUpConst} from "../../../constants/userConst";
 
 const initialState = {
-  firstName: '',
-  lastName: ''
+  firstName: '43',
+  lastName: '34'
 };
 
 const actionChangeFirstName = {
