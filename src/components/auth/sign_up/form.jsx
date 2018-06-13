@@ -1,73 +1,61 @@
-import React, {Component} from 'react';
-import {CardBody, Row, Col, Button, Form, FormGroup} from 'reactstrap';
-import TextInput from './inputs';
-import classnames from 'classnames';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {signUpConst} from "../../../constants/userConst";
+import React, { Component } from 'react';
+import { CardBody, Row, Col, Button, Form, FormGroup } from 'reactstrap';
+import { changeEmail, changePassword, changePasswordConfirm,
+         changeFirstName, changeLastName  } from '../../../actions/signUp';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import TextInput from '../inputs';
 
 const initialState = {
-  firstName: '43',
-  lastName: '34'
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  passwordConfirmation: '',
 };
 
-const actionChangeFirstName = {
-  type: signUpConst.ACTION_CHANGE_FIRST_NAME,
-  payload: null
-};
-
-const actionChangeLastName = {
-  type: signUpConst.ACTION_CHANGE_LAST_NAME,
-  payload: null
-};
-
-export const rootReducer = (state = initialState, action) => {
-  return state;
-};
-
-class SignUpForm extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-    this.state['credentials'] = { email: '', password: '' };
-    this.onChange = this.onChange.bind(this);
-    this.onSave = this.onSave.bind(this);
-  }
-
-  onChange(event) {
-    const field = event.target.name;
-    const credentials = this.state.credentials;
-    credentials[field] = event.target.value;
-    return this.setState({credentials: credentials});
-  }
-
-  onSave(event) {
-    event.preventDefault();
-    this.props.actions.logInUser(this.state.credentials);
-  }
-
+class SignUpFormData extends Component {
   render() {
-    // console.log(this.props.firstName);
+    const { email, password, passwordConfirmation, firstName, lastName,
+            changeEmail, changePassword, changePasswordConfirm,
+            changeFirstName, changeLastName } = this.props;
+    console.log('passwordConfirmation: ', passwordConfirmation);
+    console.log('this.props: ', this.props);
+
     return <CardBody>
       <Form>
-        {/*<TextInput name="first_name" label="First name"*/}
-                   {/*placeholder='Some name' onChange={this.onChange}/>*/}
+        <TextInput name="first_name" label="First name"
+                   value={firstName}
+                   placeholder='Joe' onChange={(event) => {
+                     changeFirstName(event.target.value);
+                   }} required={'required'}/>
 
-        {/*<TextInput name="last_name" label="Last name"*/}
-                   {/*placeholder='Some name' onChange={this.onChange}/>*/}
+        <TextInput name="last_name" label="Last name"
+                   value={lastName}
+                   placeholder='Dou' onChange={(event) => {
+                     changeLastName(event.target.value);
+                   }} required={'required'}/>
 
-        {/*<TextInput name="email" label="Email" type="email"*/}
-                   {/*value={this.state.credentials.email} onChange={this.onChange}/>*/}
+        <TextInput name="email" label="Email" type="email" placeholder={'example@some.dns'}
+                   value={email} onChange={(event) => {
+                     changeEmail(event.target.value);
+                   }} required={'required'}/>
 
-        {/*<TextInput name="password" label="Password" type="password" placeholder="some password"*/}
-                   {/*value={this.state.credentials.password} onChange={this.onChange}/>*/}
+        <TextInput name="password" label="Password" type="password" placeholder="password"
+                   value={password} onChange={(event) => {
+                     changePassword(event.target.value);
+                   }} required={'required'}/>
 
-        {/*<TextInput name="password_confirmation" label="Password confirmation" type="password"*/}
-                   {/*placeholder="please repeat password"*/}
-                   {/*value={this.state.credentials.password} onChange={this.onChange}/>*/}
+        <TextInput name="passwordConfirmation" label="Password confirmation" type="password" placeholder="confirm password"
+                   value={passwordConfirmation} onChange={(event) => {
+                     changePasswordConfirm(event.target.value);
+                   }} required={'required'}/>
 
+        <div>{this.props.firstName}</div>
+        <div>{this.props.lastName}</div>
+        <div>{this.props.email}</div>
+        <div>{this.props.password}</div>
+        <div>{this.props.passwordConfirmation}</div>
         <FormGroup row className={'text-center'}>
           <Col sm={{size: 12}}>
             <Button>Sign up</Button>
@@ -95,11 +83,26 @@ class SignUpForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const putStateToProps = (state) => {
+  state = state.authorizationReducer;
   return {
+    email: state.email,
+    password: state.password,
+    passwordConfirmation: state.passwordConfirmation,
     firstName: state.firstName,
     lastName: state.lastName
   };
 };
 
+const putActionToProps = (dispatch) => {
+  return {
+    changeEmail: bindActionCreators(changeEmail, dispatch),
+    changeFirstName: bindActionCreators(changeFirstName, dispatch),
+    changeLastName: bindActionCreators(changeLastName, dispatch),
+    changePassword: bindActionCreators(changePassword, dispatch),
+    changePasswordConfirm: bindActionCreators(changePasswordConfirm, dispatch)
+  }
+};
+
+const SignUpForm = connect(putStateToProps, putActionToProps)(SignUpFormData);
 export default SignUpForm;

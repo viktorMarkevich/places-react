@@ -1,15 +1,15 @@
-import { loginConst } from "../constants/userConst";
+import { authorizationConst } from "../constants/userConst";
 
 export const changeEmail = (newEmail) => {
   return {
-    type: loginConst.ACTION_CHANGE_EMAIL,
+    type: authorizationConst.ACTION_CHANGE_EMAIL,
     payload: newEmail
   };
 };
 
 export const changePassword = (newPassword) => {
   return {
-    type: loginConst.ACTION_CHANGE_PASSWORD,
+    type: authorizationConst.ACTION_CHANGE_PASSWORD,
     payload: newPassword
   }
 };
