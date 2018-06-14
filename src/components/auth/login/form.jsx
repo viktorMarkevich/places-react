@@ -2,24 +2,24 @@ import React, { Component } from 'react';
 import { CardBody, Row, Col, Button, Form, FormGroup } from 'reactstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { changeEmail, changePassword } from '../../../actions/login';
+import { changeEmailLogin, changePasswordLogin } from '../../../actions/login';
 import TextInput from '../inputs';
 
 class LoginFormData extends Component {
   render() {
-    const { email, password, changeEmail, changePassword } = this.props;
+    const { emailLogin, passwordLogin, changeEmailLogin, changePasswordLogin } = this.props;
     return <CardBody>
       <Form>
         <TextInput name="email" label="Email" type="email" placeholder="email"
-                   value={email}
+                   value={emailLogin}
                    onChange={(event) => {
-                     changeEmail(event.target.value);
+                     changeEmailLogin(event.target.value);
                    }}
                    required={'required'}/>
         <TextInput name="password" label="Password" type="password" placeholder="password"
-                   value={password}
+                   value={passwordLogin}
                    onChange={(event) => {
-                     changePassword(event.target.value);
+                     changePasswordLogin(event.target.value);
                    }}
                    required={'required'}/>
         <FormGroup row className={'text-center'}>
@@ -28,7 +28,7 @@ class LoginFormData extends Component {
           </Col>
         </FormGroup>
         <div>
-          {this.props.email + ' ' + this.props.password}
+          {this.props.emailLogin + ' ' + this.props.passwordLogin}
 
         </div>
         <Row className={'text-center'}>
@@ -61,15 +61,15 @@ class LoginFormData extends Component {
 const putStateToProps = (state) => {
   state = state.authorizationReducer;
   return {
-    email: state.email,
-    password: state.password
+    emailLogin: state.emailLogin,
+    passwordLogin: state.passwordLogin
   };
 };
 
 const putActionToProps = (dispatch) => {
   return {
-    changeEmail: bindActionCreators(changeEmail, dispatch),
-    changePassword: bindActionCreators(changePassword, dispatch),
+    changeEmailLogin: bindActionCreators(changeEmailLogin, dispatch),
+    changePasswordLogin: bindActionCreators(changePasswordLogin, dispatch),
   }
 };
 
