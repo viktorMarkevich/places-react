@@ -1,10 +1,11 @@
 import { signUpConst } from '../constants';
 
 const initialState = {
-  emailLogin: '',
-  passwordLogin: '',
   firstName: '',
-  lastName: ''
+  lastName: '',
+  email: '',
+  password: '',
+  passwordConfirmation: ''
 };
 
 export function signUpReducer(state = initialState, action) {

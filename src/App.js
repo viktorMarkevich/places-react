@@ -28,6 +28,12 @@ const LoginLayout = ({children, ...rest}) => {
   )
 };
 
+const SignUpLayout = ({children, ...rest}) => {
+    return (
+        <Container className={'main'}>{children}</Container>
+    )
+};
+
 /*
   Route wrapper
  */
@@ -52,6 +58,16 @@ const LoginLayoutRoute = ({component: Component, ...rest}) => {
   )
 };
 
+const SignUpLayoutRoute = ({component: Component, ...rest}) => {
+    return (
+        <Route {...rest} render={matchProps => (
+            <SignUpLayout>
+                <Component {...matchProps} />
+            </SignUpLayout>
+        )} />
+    )
+};
+
 /*
    App
  */
@@ -65,6 +81,7 @@ class App extends Component {
             <Redirect to="/login" />
           </Route>
           <LoginLayoutRoute path="/login" component={LoginPage} />
+          <SignUpLayoutRoute path="/sign_up" component={SignUpPage} />
 
           <DashboardRoute path="/dashboard" component={Dashboard} />
         </Switch>
