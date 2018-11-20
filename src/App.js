@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 
-import Authorization from './components/auth/authorization'
+import LoginPage from './components/auth/login'
+import SignUpPage from './components/auth/sign_up'
 import Dashboard from './components/dashboard'
 import { Container } from 'reactstrap';
 
@@ -61,9 +62,9 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/">
-            <Redirect to="/authorization" />
+            <Redirect to="/login" />
           </Route>
-          <LoginLayoutRoute path="/authorization" component={Authorization} />
+          <LoginLayoutRoute path="/login" component={LoginPage} />
 
           <DashboardRoute path="/dashboard" component={Dashboard} />
         </Switch>
