@@ -5,14 +5,7 @@ import { changeEmail, changePassword, changePasswordConfirm,
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import TextInput from '../inputs';
-
-const initialState = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  passwordConfirmation: '',
-};
+import {Link} from "react-router-dom";
 
 class SignUpFormData extends Component {
   render() {
@@ -69,22 +62,27 @@ class SignUpFormData extends Component {
         </Row>
         <Row className={'text-center'}>
           <Col sm={{size: 12}}>
-            <Button>Sign in with Google</Button>
+              <Link to={'/login'}><Button>Login</Button></Link>
           </Col>
         </Row>
-        <br/>
-        <Row className={'text-center'}>
-          <Col sm={{size: 12}}>
-            <Button>Sign in with Facebook</Button>
-          </Col>
-        </Row>
+        {/*<Row className={'text-center'}>*/}
+          {/*<Col sm={{size: 12}}>*/}
+            {/*<Button>Sign in with Google</Button>*/}
+          {/*</Col>*/}
+        {/*</Row>*/}
+        {/*<br/>*/}
+        {/*<Row className={'text-center'}>*/}
+          {/*<Col sm={{size: 12}}>*/}
+            {/*<Button>Sign in with Facebook</Button>*/}
+          {/*</Col>*/}
+        {/*</Row>*/}
       </Form>
     </CardBody>
   }
 }
 
 const putStateToProps = (state) => {
-  state = state.authorizationReducer;
+  state = state.signUpReducer;
   return {
     email: state.email,
     password: state.password,

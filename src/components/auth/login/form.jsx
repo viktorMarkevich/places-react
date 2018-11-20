@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeEmail, changePassword } from '../../../actions/login';
 import TextInput from '../inputs';
+import {Link} from "react-router-dom";
 
 class LoginFormData extends Component {
   render() {
@@ -38,11 +39,16 @@ class LoginFormData extends Component {
           {/*</Col>*/}
         {/*</Row>*/}
 
-        {/*<Row className={'text-center'}>*/}
-          {/*<Col sm={{size: 12}}>*/}
-            {/*Or*/}
-          {/*</Col>*/}
-        {/*</Row>*/}
+        <Row className={'text-center'}>
+          <Col sm={{size: 12}}>
+            Or
+          </Col>
+        </Row>
+          <Row className={'text-center'}>
+            <Col sm={{size: 12}}>
+                  <Link to={'/sign_up'}><Button>Sign Up</Button></Link>
+            </Col>
+          </Row>
         {/*<Row className={'text-center'}>*/}
           {/*<Col sm={{size: 12}}>*/}
             {/*<Button>Sign in with Google</Button>*/}
