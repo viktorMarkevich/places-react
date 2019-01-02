@@ -1,33 +1,35 @@
-import React, { Component } from 'react';
-import { getJwt } from '../helpers/jwt'
+import React, {Component} from 'react';
+import {getJwt} from "../helpers/jwt";
 import axios from 'axios';
 
-class AuthenticatedComponent extends Component {
+class Dashboard extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            user: undefined
+            data: undefined
         };
 
     }
 
     componentDidMount() {
         const jwt = getJwt();
+
         if (!jwt) {
             this.props.history.push('/login');
         }
 
-        axios.get('/', { headers: { Authorization: `Bearer ${jwt}`} }).then(res => this.setState({
-            user: res.data
+        console.log('here');
+        axios.get('/dashboard', { headers: { Authorization: `Bearer ${jwt}`} }).then(res => this.setState({
+            data: res.data
         })).catch( err => {
             localStorage.removeItem('user_id');
-           this.props.history.push('/login');
+            this.props.history.push('/login');
         });
     }
 
     render() {
-        if (this.state.user === undefined) {
+        if (this.state.data === undefined) {
             return (
                 <div>
                     <h1>
@@ -38,10 +40,11 @@ class AuthenticatedComponent extends Component {
         }
         return (
             <div>
-                {this.props.children}
+                {this.state.data.data}
+                {/*{this.props.children}*/}
             </div>
         );
     }
 };
 
-export default AuthenticatedComponent;
+export default Dashboard;

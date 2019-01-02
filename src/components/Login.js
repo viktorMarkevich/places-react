@@ -23,12 +23,13 @@ class Login extends Component {
 
     submit(e) {
         e.preventDefault();
-        axios.post('/auth/login', {
+        axios.post('/auth/login', { authentication: {
             email: this.state.email,
-            password: this.state.password,
+            password: this.state.password }
         }).then(res => {
-            localStorage.setItem('cool-jwt', res.data.auth_token);
-            this.props.history.push('/protected');
+            localStorage.setItem('user_id', res.data.auth_token);
+            // this.props.history.push('/protected');
+            this.props.history.push('/dashboard');
         });
     }
 
